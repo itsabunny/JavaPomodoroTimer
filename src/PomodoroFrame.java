@@ -40,6 +40,15 @@ public class PomodoroFrame extends javax.swing.JFrame {
         buttonPanel.add(pauseButton);
         buttonPanel.add(resetButton);
 
+        startButton.addActionListener(e -> timer.start());
+        pauseButton.addActionListener(e -> timer.stop());
+        resetButton.addActionListener(e -> {
+            timer.stop();
+            secondsLeft = workTime;
+            isWorking = true;
+            updateLabel();
+        });
+
         add(timeLabel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -62,7 +71,7 @@ public class PomodoroFrame extends javax.swing.JFrame {
 
     private void updateLabel() {
         int minutes = secondsLeft / 60;
-        inte seconds = secondsLeft % 60;
+        int seconds = secondsLeft % 60;
         timeLabel.setText(String.format("%02d:%02d", minutes, seconds));
     }
 }
