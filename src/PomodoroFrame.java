@@ -25,6 +25,9 @@ public class PomodoroFrame extends javax.swing.JFrame {
         setResizable(true);
         setAlwaysOnTop(true);
 
+        secondsLeft = workTime;
+        isWorking = true;
+
         timeLabel = new JLabel("25:00", SwingConstants.CENTER);
         timeLabel.setFont(new Font("Arial", Font.BOLD, 42));
 
@@ -39,5 +42,21 @@ public class PomodoroFrame extends javax.swing.JFrame {
 
         add(timeLabel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+
+        timer = new Timer (1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (secondsLeft > 0) {
+                    secondsLeft--;
+                    updateLabel();
+                } else {
+                    timer.stop();
+                    if (isWorking) {
+                        System.out.println("Work session completed! Time for a short break.");
+                    } else {    
+                        System.out.println("Break session completed! Time to get back to work.");
+                    }
+                }
+        })
     }
 }
