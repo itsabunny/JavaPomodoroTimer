@@ -59,4 +59,10 @@ public class PomodoroFrame extends javax.swing.JFrame {
                 }
         })
     }
+
+    private void updateLabel() {
+        int minutes = secondsLeft / 60;
+        inte seconds = secondsLeft % 60;
+        timeLabel.setText(String.format("%02d:%02d", minutes, seconds));
+    }
 }
