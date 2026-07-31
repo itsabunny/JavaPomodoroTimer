@@ -52,7 +52,7 @@ public class PomodoroFrame extends javax.swing.JFrame {
         add(timeLabel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        timer = new Timer (1000, new ActionListener() {
+                timer = new Timer (1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (secondsLeft > 0) {
@@ -66,7 +66,9 @@ public class PomodoroFrame extends javax.swing.JFrame {
                         System.out.println("Break session completed! Time to get back to work.");
                     }
                 }
-        })
+            }
+        });
+
     }
 
     private void updateLabel() {
