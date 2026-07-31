@@ -2,13 +2,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.Timer;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
 public class PomodoroFrame extends javax.swing.JFrame {
     
     private JLabel timeLabel;
+    private Timer timer;
+    private int secondsLeft;
+    private boolean isWorking;
+    private final int workTime = 25 * 60; // 25 minutes
+    private final int shortBreakTime = 5 * 60; // 5 minutes
 
     public PomodoroFrame() {
         setTitle("Pomodoro Timer");
